@@ -1,4 +1,4 @@
-using Sysyem;
+using System;
 namespace DeviceManage
 {
     // khai báo class computer
