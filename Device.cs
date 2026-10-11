@@ -1,6 +1,6 @@
 
 using System;
-
+namespace DeviceManage{
 public enum DeviceStatus
 {
     Active,
@@ -25,7 +25,7 @@ public abstract class Device
         int yearIntroduced,
         decimal purchasePrice,
         DeviceStatus status = DeviceStatus.Active)
-    {
+    {//yeu cau
         if (string.IsNullOrWhiteSpace(deviceId))
             throw new ArgumentException("Ma thiet bi khong duoc rong.");
 
@@ -46,6 +46,7 @@ public abstract class Device
         Status = status;
     }
 
+    // phương thức trừu tượng chí phí bảo trì dự kiến
     public abstract decimal CalculateMaintenanceCost();
 
     public override string ToString()
@@ -55,4 +56,5 @@ public abstract class Device
                $"Gia mua: {PurchasePrice:N0} VND, " +
                $"Trang thai: {Status}";
     }
+}
 }
