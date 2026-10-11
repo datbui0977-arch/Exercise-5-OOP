@@ -29,6 +29,7 @@ namespace DeviceManage
         HasDedicatedGPU = hasDedicatedGPU;
     }
         // các method
+        //chi phí bảo trì
     public override decimal CalculateMaintenanceCost()
     {
         decimal rate = 0.05m;
@@ -41,7 +42,7 @@ namespace DeviceManage
 
         return PurchasePrice * rate;
     }
-
+    // kiểm tra kết nối
     public void Connect(string ipAddress)
     {
         if (IsConnected)
@@ -57,7 +58,7 @@ namespace DeviceManage
     {
         IpAddress = "";
     }
-
+    // in các thông tin
     public override string ToString()
     {
         return base.ToString() +
