@@ -1,4 +1,6 @@
+@"
 bin/
 obj/
 .vs/
-*.user
+.vscode/
+"@ | Set-Content .gitignore
