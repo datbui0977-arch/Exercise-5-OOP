@@ -1,9 +1,10 @@
 using Sysyem;
 namespace DeviceManage
 {
+    // khai báo class computer
     public class Computer : Device, INetworkable
     {
-        public int RamGB { get; set; }
+    public int RamGB { get; set; }
     public string ProcessorType { get; set; }
     public bool HasDedicatedGPU { get; set; }
 
@@ -27,6 +28,44 @@ namespace DeviceManage
         ProcessorType = processorType;
         HasDedicatedGPU = hasDedicatedGPU;
     }
+        // các method
+    public override decimal CalculateMaintenanceCost()
+    {
+        decimal rate = 0.05m;
+
+        if (HasDedicatedGPU)
+            rate += 0.02m;
+
+        if (YearsUsed > 5)
+            rate += 0.01m;
+
+        return PurchasePrice * rate;
     }
-    
+
+    public void Connect(string ipAddress)
+    {
+        if (IsConnected)
+            throw new InvalidOperationException("Thiet bi dang ket noi.");
+
+        if (string.IsNullOrWhiteSpace(ipAddress))
+            throw new ArgumentException("IP khong duoc rong.");
+
+        IpAddress = ipAddress;
+    }
+
+    public void Disconnect()
+    {
+        IpAddress = "";
+    }
+
+    public override string ToString()
+    {
+        return base.ToString() +
+               $", RAM: {RamGB}GB, CPU: {ProcessorType}, " +
+               $"GPU roi: {HasDedicatedGPU}";
+    }
+
+    }
+
+
 }
